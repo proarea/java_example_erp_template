@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "email": "user@gmail.com",
+  "firstName": "First",
+  "lastName": "Last",
+  "phone": "+380453345345",
+  "photoUrl": "photo/1",
+  "password": "password",
+  "status": "EMAIL_CONFIRMATION",
+  "role": null,
+  "createdBy": 1,
+  "createdAt": "yyyy-MM-ddTHH:mm:ss",
+  "updatedBy": 1,
+  "updatedAt": "yyyy-MM-ddTHH:mm:ss",
+  "deleted": false
+}

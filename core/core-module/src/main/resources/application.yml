@@ -1,0 +1,74 @@
+spring:
+  application:
+    name: core
+
+  datasource:
+    url: ${ERP_DB_URL:jdbc:postgresql://0.0.0.0:5436/erp}
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 30
+      max-lifetime: 2000000
+      driver-class-name: ${ERP_DB_DRIVER:org.postgresql.Driver}
+      username: ${ERP_DB_USERNAME:erp_user}
+      password: ${ERP_DB_PASSWORD:12345678}
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: validate
+      naming:
+        implicit-strategy: org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+    properties:
+      hibernate.jdbc.lob.non_contextual_creation: true
+      hibernate.temp.use_jdbc_metadata_defaults: false
+      cache.use_minimal_puts: true
+      cache.use_query_cache: false
+      use_second_level_cache: false
+      hibernate.show_sql: false
+      hibernate.use_sql: true
+      hibernate.id.new_generator_mappings: false
+      use_reflection_optimizer: false
+      auto-register_listeners: false
+      hibernate.enable_lazy_load_no_trans: true
+    show-sql: true
+    open-in-view: true
+    generate-ddl: false
+    database: postgresql
+
+  liquibase:
+    change-log: classpath:/db/db.changelog-master.xml
+    enabled: true
+    default-schema: public
+
+  main:
+    allow-bean-definition-overriding: true
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+server:
+  port: 8081
+  error:
+    include-message: always
+    include-binding-errors: always
+    whitelabel:
+      enabled: false
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+media:
+  name: media
+  baseUrl: /v1/media
+
+aws:
+  secret: ${AWS_ACCESS_SECRET}
+  key: ${AWS_ACCESS_KEY}
+  region: ${AWS_REGION:eu-west-2}
+  sqs: erp-sqs

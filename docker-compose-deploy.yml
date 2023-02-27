@@ -1,0 +1,106 @@
+version: '3'
+services:
+
+  erp-postgres:
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+      args:
+        - ERP_DATABASE_NAME=erp
+        - ERP_DB_USERNAME=erp_user
+        - ERP_DB_PASSWORD=12345678
+    container_name: erp_postgres
+    image: erp_postgres
+    ports:
+      - "5436:5432"
+    networks:
+      - erp_network
+
+  erp-discovery:
+    build:
+      context: .
+      dockerfile: discovery/Dockerfile
+    container_name: erp_discovery
+    image: erp_discovery
+    expose:
+      - 8761
+    ports:
+      - "8761:8761"
+    networks:
+      - erp_network
+
+  erp-media:
+    build:
+      context: .
+      dockerfile: media/media-core/Dockerfile
+    container_name: erp_media
+    image: erp_media
+    environment:
+      - AWS_ACCESS_KEY=
+      - AWS_ACCESS_SECRET=
+      - EUREKA_URI=http://erp-discovery:8761/eureka
+    depends_on:
+      - erp-discovery
+    expose:
+      - 8077
+    networks:
+      - erp_network
+
+  erp-communication:
+    build:
+      context: .
+      dockerfile: communication/communication-core/Dockerfile
+    container_name: erp_communication
+    image: erp_communication
+    environment:
+      - AWS_ACCESS_KEY=
+      - AWS_ACCESS_SECRET=
+      - COMMUNICATION_EMAIL=
+      - COMMUNICATION_USERNAME=
+      - COMMUNICATION_PASSWORD=
+      - EUREKA_URI=http://erp-discovery:8761/eureka
+    depends_on:
+      - erp-discovery
+    expose:
+      - 8078
+    networks:
+      - erp_network
+
+  erp-core:
+    build:
+      context: .
+      dockerfile: core/core-module/Dockerfile
+    container_name: erp_core
+    image: erp_core
+    environment:
+      - AWS_ACCESS_KEY=
+      - AWS_ACCESS_SECRET=
+      - ERP_DB_URL=jdbc:postgresql://erp-postgres:5432/erp
+      - EUREKA_URI=http://erp-discovery:8761/eureka
+    depends_on:
+      - erp-discovery
+      - erp-postgres
+    expose:
+      - 8081
+    networks:
+      - erp_network
+
+  erp-gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    container_name: erp_gateway
+    image: erp_gateway
+    environment:
+      - EUREKA_URI=http://erp-discovery:8761/eureka
+    depends_on:
+      - erp-discovery
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    networks:
+      - erp_network
+
+networks:
+  erp_network:

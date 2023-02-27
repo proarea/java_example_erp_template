@@ -1,0 +1,5 @@
+{
+  "to": ["test@some.mail"],
+  "templateModel": {},
+  "emailType": "APPROVED"
+}

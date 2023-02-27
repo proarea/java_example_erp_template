@@ -1,0 +1,9 @@
+{
+  "to": ["test@some.mail", "admin@some.mail"],
+  "templateModel": {
+    "name" : "Darth Vader",
+    "email": "test@some.mail",
+    "phone": "some_phone"
+  },
+  "emailType": "WAITING_APPROVAL"
+}

@@ -1,0 +1,29 @@
+{
+  "content": [
+    {
+      "id": 5,
+      "email": "david.miller@gmail.com",
+      "firstName": "David",
+      "lastName": "Miller",
+      "phone": "+380453345781",
+      "photoUrl": null
+    }
+  ],
+  "pageable": {
+    "sort": [],
+    "offset": 0,
+    "pageNumber": 0,
+    "pageSize": 20,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalElements": 1,
+  "totalPages": 1,
+  "first": true,
+  "size": 20,
+  "number": 0,
+  "sort": [],
+  "numberOfElements": 1,
+  "empty": false
+}

@@ -1,0 +1,45 @@
+{
+  "content": [
+    {
+      "id": 2,
+      "email": "boris.johnson@gmail.com",
+      "firstName": "Boris",
+      "lastName": "Johnson",
+      "phone": "+380453345778",
+      "photoUrl": null
+    },
+    {
+      "id": 4,
+      "email": "roberto.brown@gmail.com",
+      "firstName": "Roberto",
+      "lastName": "Brown",
+      "phone": "+380453345780",
+      "photoUrl": null
+    },
+    {
+      "id": 7,
+      "email": "darth.vader@gmail.com",
+      "firstName": "Darth",
+      "lastName": "Vader",
+      "phone": "+380453345783",
+      "photoUrl": null
+    }
+  ],
+  "pageable": {
+    "sort": [],
+    "offset": 0,
+    "pageNumber": 0,
+    "pageSize": 20,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalPages": 1,
+  "totalElements": 3,
+  "first": true,
+  "size": 20,
+  "number": 0,
+  "sort": [],
+  "numberOfElements": 3,
+  "empty": false
+}

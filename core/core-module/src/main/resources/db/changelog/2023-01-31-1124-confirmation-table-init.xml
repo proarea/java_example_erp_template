@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.2.xsd">
+
+    <changeSet author="Tarashchuk" id="2023-01-31-1124-confirmation-table-init">
+        <createTable tableName="confirmation">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints nullable="false"
+                             unique="true"
+                             primaryKey="true"
+                             primaryKeyName="confirmation_pkey"/>
+            </column>
+
+            <column name="user_id" type="bigint">
+                <constraints nullable="false"
+                             unique="true"
+                             foreignKeyName="confirmation_user_fk"
+                             referencedTableName="users"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="code" type="text"/>
+            <column name="expiration_time" type="timestamp without time zone"/>
+            <column name="created_at" type="timestamp without time zone"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

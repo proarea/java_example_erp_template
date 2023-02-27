@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    hikari:
+      driver-class-name: ${ERP_DB_DRIVER:org.postgresql.Driver}
+  profiles:
+    active: test
+
+test-container:
+  postgresImageVersion: ${POSTGRES_IMAGE_VERSION:postgres:10.2}
+
+eureka:
+  client:
+    enabled: false

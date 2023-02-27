@@ -1,0 +1,20 @@
+version: '3'
+services:
+
+  erp-postgres:
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+      args:
+        - ERP_DATABASE_NAME=erp
+        - ERP_DB_USERNAME=erp_user
+        - ERP_DB_PASSWORD=12345678
+    container_name: erp_postgres
+    image: erp_postgres
+    ports:
+      - "5436:5432"
+    networks:
+      - erp_network
+
+networks:
+  erp_network:

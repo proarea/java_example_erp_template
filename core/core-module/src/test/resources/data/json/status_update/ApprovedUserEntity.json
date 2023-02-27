@@ -1,0 +1,16 @@
+{
+  "id": 5,
+  "email": "david.miller@gmail.com",
+  "firstName": "David",
+  "lastName": "Miller",
+  "phone": "+380453345781",
+  "photoUrl": null,
+  "password": "password",
+  "status": "ACTIVE",
+  "role": "ROLE_USER",
+  "createdBy": 1,
+  "createdAt": "yyyy-MM-ddTHH:mm:ss",
+  "updatedBy": 2,
+  "updatedAt": "yyyy-MM-ddTHH:mm:ss",
+  "deleted": false
+}

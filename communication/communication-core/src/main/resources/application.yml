@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: communication
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+
+    username: ${COMMUNICATION_USERNAME}
+    password: ${COMMUNICATION_PASSWORD}
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+        from: ${COMMUNICATION_EMAIL}
+
+server:
+  port: 8078
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}
+
+aws:
+  secret: ${AWS_ACCESS_SECRET}
+  key: ${AWS_ACCESS_KEY}
+  region: ${AWS_REGION:eu-west-2}
+  sqs: erp-sqs
+
